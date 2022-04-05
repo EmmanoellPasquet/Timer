@@ -19,6 +19,24 @@ body {
   line-height: 1.5em;
 }
 
+h1 {
+  text-transform: uppercase;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  font-size: 2em;
+  width: fit-content;
+  margin: auto;
+  padding: .5em;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.titleIcon {
+  padding-left: 1em;
+}
+
 .container {
   max-width: 640px;
   margin: 50px auto;
@@ -74,8 +92,8 @@ body {
 }
 
 .statusText {
-  color: #000;
-  font-size: 2rem;
+  color: var(--primary-color);
+  font-size: 1.5rem;
   height: 1.5rem;
   display: flex;
   align-items: center;
@@ -174,5 +192,9 @@ form button:hover {
 
   .timeText {
     font-size: .75em;
+  }
+
+  h1 {
+    font-size: 1.5em;
   }
 }
