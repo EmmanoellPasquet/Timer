@@ -147,3 +147,32 @@ form button:hover {
 .bad {
   background: rgb(255, 150, 150);
 }
+
+@media (max-width: 620px) {
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: 200px;
+  }
+
+  .outer-timer .btn {
+    width: 100%;
+  }
+
+  .statusText {
+    font-size: 1em;
+  }
+
+  .inner-timer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .timeText {
+    font-size: .75em;
+  }
+}
