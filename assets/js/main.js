@@ -3,6 +3,9 @@ function Timer() {
     const timeText = document.querySelector('.timeText');
     const pause = document.querySelector('.-pause');
     const reset = document.querySelector('.-reset');
+    const start = document.querySelector('.-start');
+    const status = document.querySelector('.statusText')
+
     let secs = 0;
     let timer;
 
@@ -47,48 +50,40 @@ function Timer() {
         clearInterval(timerDots);
     }
 
+    start.addEventListener('click', () => {
+        timeText.classList.remove('pause');
+        start.classList.add('disabled');
+        pause.classList.remove('disabled');
+        reset.classList.remove('disabled');
+        status.innerHTML = 'TIMER IS RUNNING<p class="dots"></p>'
+        pauseClock();
+        initClock();
+        loadingDots();
+    });
 
-    document.addEventListener('click', (e) => {
-        const el = e.target;
-        const start = document.querySelector('.-start');
-        const status = document.querySelector('.statusText')
+    pause.addEventListener('click', () => {
+        pauseClock();
+        clearDots();
+        start.innerHTML = 'Resume';
+        status.innerHTML = 'TIMER IS PAUSED!'
+        start.disabled = false;
+        start.classList.remove('disabled');
+        timeText.classList.add('pause');
+        pause.classList.add('disabled');
+        reset.classList.remove('disabled');
+    });
 
-        if (el.classList.contains('-start')) {
-            timeText.classList.remove('pause');
-            start.classList.add('disabled');
-            pause.classList.remove('disabled');
-            reset.classList.remove('disabled');
-            status.innerHTML = 'TIMER IS RUNNING<p class="dots"></p>'
-            pauseClock();
-            initClock();
-            loadingDots();
-        }
-
-        if (el.classList.contains('-pause')) {
-            pauseClock();
-            start.innerHTML = 'Resume';
-            status.innerHTML = 'TIMER IS PAUSED!'
-            start.disabled = false;
-            start.classList.remove('disabled');
-            timeText.classList.add('pause');
-            pause.classList.add('disabled');
-            reset.classList.remove('disabled');
-            clearDots();
-
-        }
-
-        if (el.classList.contains('-reset')) {
-            pauseClock();
-            restart();
-            start.disabled = false;
-            start.classList.remove('disabled');
-            status.innerHTML = 'Your timer has not started yet';
-            start.innerHTML = 'Start';
-            timeText.classList.remove('pause');
-            reset.classList.add('disabled');
-            pause.classList.add('disabled');
-            clearDots();
-        }
+    reset.addEventListener('click', () => {
+        pauseClock();
+        restart();
+        start.disabled = false;
+        start.classList.remove('disabled');
+        status.innerHTML = 'Your timer has not started yet';
+        start.innerHTML = 'Start';
+        timeText.classList.remove('pause');
+        reset.classList.add('disabled');
+        pause.classList.add('disabled');
+        clearDots();
     });
 }
 
